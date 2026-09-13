@@ -506,3 +506,29 @@ footer {
 
   word-break: break-all;
 }
+/* Refresh Button */
+
+#refreshBtn {
+  background: transparent;
+  color: #d4d4d8;
+  border: 1px solid #383845;
+  border-radius: 12px;
+  padding: 13px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+#refreshBtn:hover {
+  background: #181820;
+  border-color: #8b5cf6;
+  color: white;
+  transform: translateY(-2px);
+}
+
+#refreshBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}

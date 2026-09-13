@@ -75,17 +75,19 @@ document.querySelector('#app').innerHTML = `
 
       <div class="actions">
 
-        <button id="newBtn">
-          ＋ New Kopy
-        </button>
+  <button id="newBtn">
+    ＋ New Kopy
+  </button>
 
-        <button id="shareBtn">
-          ↗ Share
-        </button>
+  <button id="refreshBtn">
+    ↻ Refresh
+  </button>
 
-      </div>
+  <button id="shareBtn">
+    ↗ Share
+  </button>
 
-    </section>
+</div>
 
 
   <footer>
@@ -107,6 +109,8 @@ const count = document.querySelector('#count')
 const copyBtn = document.querySelector('#copyBtn')
 
 const newBtn = document.querySelector('#newBtn')
+
+const refreshBtn = document.querySelector('#refreshBtn')
 
 const shareBtn = document.querySelector('#shareBtn')
 
@@ -183,7 +187,57 @@ newBtn.addEventListener('click', () => {
   text.focus()
 
 })
+// Refresh Kopy
 
+refreshBtn.addEventListener('click', async () => {
+
+  const name = kopyName.value.trim()
+
+  if (!name) {
+    return
+  }
+
+  refreshBtn.textContent = 'Refreshing...'
+  refreshBtn.disabled = true
+
+  try {
+
+    const q = query(
+      collection(db, 'kopys'),
+      where('name', '==', name)
+    )
+
+    const snapshot = await getDocs(q)
+
+    if (!snapshot.empty) {
+
+      const data = snapshot.docs[0].data()
+
+      text.value = data.text || ''
+
+      count.textContent =
+        `${text.value.length} characters`
+
+    } else {
+
+      alert('Unable to refresh. Kopy not found.')
+
+    }
+
+  } catch (error) {
+
+    console.error(error)
+
+    alert('Unable to refresh. Please try again.')
+
+  } finally {
+
+    refreshBtn.textContent = '↻ Refresh'
+    refreshBtn.disabled = false
+
+  }
+
+})
 
 // Share button
 
