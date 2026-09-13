@@ -194,14 +194,20 @@ refreshBtn.addEventListener('click', async () => {
   const name = kopyName.value.trim()
 
   if (!name) {
+    alert('No Kopy is currently open.')
     return
   }
+
+  // Keep the existing content in case refresh fails
+  const oldContent = text.value
+  const oldCount = count.textContent
 
   refreshBtn.textContent = 'Refreshing...'
   refreshBtn.disabled = true
 
   try {
 
+    // Fetch the latest data directly from Firebase
     const q = query(
       collection(db, 'kopys'),
       where('name', '==', name)
@@ -209,24 +215,31 @@ refreshBtn.addEventListener('click', async () => {
 
     const snapshot = await getDocs(q)
 
-    if (!snapshot.empty) {
+    if (snapshot.empty) {
 
-      const data = snapshot.docs[0].data()
-
-      text.value = data.text || ''
-
-      count.textContent =
-        `${text.value.length} characters`
-
-    } else {
-
-      alert('Unable to refresh. Kopy not found.')
+      throw new Error('Kopy not found')
 
     }
 
+    // Get the newest server data
+    const data = snapshot.docs[0].data()
+
+    const latestText = data.text || ''
+
+    // Update only the clipboard content
+    text.value = latestText
+
+    // Update character count
+    count.textContent =
+      `${latestText.length} characters`
+
   } catch (error) {
 
-    console.error(error)
+    console.error('Refresh failed:', error)
+
+    // Restore the previous content
+    text.value = oldContent
+    count.textContent = oldCount
 
     alert('Unable to refresh. Please try again.')
 
@@ -238,6 +251,8 @@ refreshBtn.addEventListener('click', async () => {
   }
 
 })
+
+
 
 // Share button
 
