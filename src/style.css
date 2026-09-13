@@ -1,0 +1,508 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #0b0d12;
+  color: #f5f7ff;
+  min-height: 100vh;
+}
+
+header {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8%;
+  border-bottom: 1px solid #20232d;
+  background: #0b0d12;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+nav {
+  display: flex;
+  gap: 35px;
+}
+
+nav a {
+  color: #aeb4c2;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+nav a:hover {
+  color: white;
+}
+
+.login-btn {
+  background: transparent;
+  border: 1px solid #343946;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+main {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.hero {
+  text-align: center;
+  padding: 90px 20px 70px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 8px 15px;
+  border-radius: 30px;
+  background: #171a23;
+  border: 1px solid #2b303c;
+  color: #aeb4c2;
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+
+h1 {
+  font-size: clamp(48px, 7vw, 82px);
+  line-height: 1;
+  letter-spacing: -4px;
+  margin-bottom: 25px;
+}
+
+h1 span {
+  color: #8b5cf6;
+}
+
+.hero > p {
+  max-width: 600px;
+  margin: auto;
+  color: #9da4b3;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.kopy-box {
+  max-width: 750px;
+  margin: 45px auto 20px;
+  background: #11141b;
+  border: 1px solid #292e39;
+  border-radius: 16px;
+  overflow: hidden;
+  text-align: left;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+textarea {
+  width: 100%;
+  height: 230px;
+  resize: vertical;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 22px;
+  font-size: 16px;
+  line-height: 1.6;
+  font-family: inherit;
+}
+
+textarea::placeholder {
+  color: #606775;
+}
+
+.box-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px 18px;
+  border-top: 1px solid #292e39;
+}
+
+#count {
+  color: #697181;
+  font-size: 13px;
+}
+
+#copyBtn {
+  background: #8b5cf6;
+  border: none;
+  color: white;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#copyBtn:hover {
+  background: #7c4de8;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.actions button {
+  padding: 11px 22px;
+  border-radius: 9px;
+  border: 1px solid #303541;
+  background: #151820;
+  color: white;
+  cursor: pointer;
+}
+
+.actions button:hover {
+  background: #20242e;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid #20232d;
+  border-bottom: 1px solid #20232d;
+}
+
+.feature {
+  padding: 40px 35px;
+  border-right: 1px solid #20232d;
+}
+
+.feature:last-child {
+  border-right: none;
+}
+
+.icon {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.feature h3 {
+  font-size: 19px;
+  margin-bottom: 10px;
+}
+
+.feature p {
+  color: #858c9b;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+footer {
+  text-align: center;
+  padding: 35px;
+  color: #626978;
+  font-size: 13px;
+}
+
+@media (max-width: 700px) {
+
+  header {
+    padding: 0 20px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .hero {
+    padding: 60px 15px;
+  }
+
+  h1 {
+    font-size: 50px;
+    letter-spacing: -2px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .feature {
+    border-right: none;
+    border-bottom: 1px solid #20232d;
+  }
+
+  .feature:last-child {
+    border-bottom: none;
+  }
+
+}
+
+
+/* Kopy Name Box */
+
+#kopyName {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+
+  background: #0f1018;
+  color: #ffffff;
+
+  border: 1px solid #292b3a;
+  border-radius: 12px;
+
+  outline: none;
+  font-size: 15px;
+  font-family: inherit;
+
+  transition: 0.25s ease;
+}
+
+#kopyName::placeholder {
+  color: #77798a;
+}
+
+#kopyName:focus {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+}
+
+
+/* C → K animation */
+
+.kopy-animation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.letter-box {
+  position: relative;
+  display: inline-block;
+  width: 0.65em;
+  height: 1em;
+}
+
+.c-letter,
+.k-letter {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.c-letter {
+  animation: cDisappear 4s ease-in-out infinite;
+}
+
+.k-letter {
+  opacity: 0;
+  color: #8b5cf6;
+  animation: kAppear 4s ease-in-out infinite;
+}
+
+@keyframes cDisappear {
+
+  0%, 35% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50%, 100% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+
+}
+
+@keyframes kAppear {
+
+  0%, 35% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+
+  50%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+}
+
+
+/* Hero Subtitle */
+
+.hero-subtitle {
+  font-size: 22px;
+  color: #a1a1aa;
+  text-align: center;
+  margin: 0 0 35px;
+}
+
+.hero-subtitle span {
+  color: #8b5cf6;
+}
+
+
+/* Modern Kopy Box */
+
+.kopy-box {
+  background: rgba(20, 20, 30, 0.8);
+  border: 1px solid #292936;
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+#kopyName,
+#text {
+  background: #101018;
+  border: 1px solid #292936;
+  border-radius: 12px;
+  color: white;
+}
+
+#kopyName:focus,
+#text:focus {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12);
+}
+
+#text {
+  min-height: 180px;
+  resize: vertical;
+}
+
+.box-bottom {
+  border-top: 1px solid #292936;
+  margin-top: 10px;
+  padding-top: 12px;
+}
+
+
+/* Kopy Share Button */
+
+#shareBtn {
+  background: #8b5cf6;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 13px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+#shareBtn:hover {
+  background: #7c3aed;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.35);
+}
+
+#shareBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+/* New Kopy Button */
+
+#newBtn {
+  background: transparent;
+  color: #d4d4d8;
+  border: 1px solid #383845;
+  border-radius: 12px;
+  padding: 13px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+#newBtn:hover {
+  background: #181820;
+  border-color: #8b5cf6;
+  color: white;
+  transform: translateY(-2px);
+}
+
+
+#kopyName {
+  height: 50px;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0 16px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+}
+
+#kopyName::placeholder {
+  color: #71717a;
+}
+
+#kopyName:hover {
+  border-color: #52525b;
+}
+
+
+/* Smooth C to K animation */
+
+.letter-box {
+  width: 0.7em;
+  height: 1em;
+  overflow: visible;
+}
+
+.c-letter {
+  animation: cDisappear 4s ease-in-out infinite;
+}
+
+.k-letter {
+  animation: kAppear 4s ease-in-out infinite;
+}
+
+@keyframes cDisappear {
+
+  0%, 35% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+
+  50%, 100% {
+    opacity: 0;
+    transform: scale(0.6) rotate(-15deg);
+  }
+
+}
+
+@keyframes kAppear {
+
+  0%, 35% {
+    opacity: 0;
+    transform: scale(0.6) rotate(15deg);
+  }
+
+  50%, 100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+
+}
+
+
+/* URL Preview */
+
+.url-preview {
+  margin: 8px 4px 12px;
+  padding: 8px 4px;
+
+  color: #8b5cf6;
+  font-size: 13px;
+  font-weight: 500;
+
+  word-break: break-all;
+}
